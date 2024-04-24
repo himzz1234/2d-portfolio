@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="./js/index.js" defer></script>
+  <body>
+    <main class="cabinet">
+      <div class="cabinet_marqueeContainer">
+        <div class="cabinet_marquee">
+          <img src="/assets/images/marquee.png" width="300" height="70" />
+        </div>
+
+        <div class="cabinet_marqueeBottom outer">
+          <div class="cabinet_marqueeBottom blurred">
+            <div class="cabinet_marqueeBottom bitten"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cabinet_screen">
+        <div class="cabinet_screenScanlines">
+          <div class="cabinet_screenContainer">
+            <div class="cabinet_screenContent">
+              <header class="cabinet_screenContentHeader">
+                <p>Credit 2</p>
+                <h1>Press enter</h1>
+              </header>
+
+              <main class="cabinet_screenContentMain">
+                <ul class="cabinet_screenContentList">
+                  <li class="cabinet_screenContentItem active">About</li>
+                  <li class="cabinet_screenContentItem">Work Experience</li>
+                  <li class="cabinet_screenContentItem">Projects</li>
+                  <li class="cabinet_screenContentItem">Contact Me</li>
+                </ul>
+              </main>
+
+              <footer class="cabinet_screenFooter">
+                <div class="cabinet_screenFooterLeft">
+                  <img
+                    src="/assets/icons/letter-c.png"
+                    width="18"
+                    height="18"
+                    alt="copyright"
+                  />
+                  <p>2024 Himanshu</p>
+                </div>
+                <div class="cabinet_screenFooterRight">
+                  <img
+                    src="/assets/icons/mute.png"
+                    width="18"
+                    height="18"
+                    alt="mute"
+                  />
+                  <audio
+                    id="audio_theme"
+                    src="/assets/audio/theme.mp3"
+                    muted
+                    loop
+                  />
+                </div>
+              </footer>
+            </div>
+
+            <audio
+              id="audio_changingtab"
+              src="/assets/audio/changing-tab.wav"
+            ></audio>
+            <audio
+              id="audio_selectingtab"
+              src="/assets/audio/select-tab.wav"
+            ></audio>
+          </div>
+        </div>
+      </div>
+
+      <div class="cabinet_controls outer">
+        <div class="cabinet_controls blurred">
+          <div class="cabinet_controls bitten"></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

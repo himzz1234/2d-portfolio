@@ -1,0 +1,262 @@
+:root {
+  --marquee-height: 220px;
+}
+
+/* @font-face {
+  font-family: Games;
+  src: url("../assets/fonts/Games-XvD2.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: "Invaders";
+  src: url("../assets/fonts/space_invaders.ttf") format("truetype");
+  /* font-weight: normal;
+  font-style: normal; */
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "VT323", monospace;
+  color: white;
+}
+
+/*** CABINET STYLES ***/
+
+.cabinet {
+  height: 100vh;
+  background-color: black;
+}
+
+.cabinet_marqueeContainer {
+  position: relative;
+  height: var(--marquee-height);
+  z-index: 40;
+}
+
+.cabinet_marquee {
+  position: relative;
+  border-bottom: 8px solid #5e5f99;
+  border-left: 4px solid #555289;
+  border-right: 4px solid #555289;
+  width: 100%;
+  height: 120px;
+  background-color: #38386c;
+  padding: 2;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .cabinet_marqueeTitle {
+  text-align: center;
+  font-size: 96px;
+  font-family: "Invaders", Fallback, sans-serif;
+} */
+
+.cabinet_marqueeBottom {
+  width: 100%;
+  height: 100px;
+}
+
+.cabinet_controls {
+  width: 100%;
+  height: 160px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+}
+
+.cabinet_marqueeBottom.blurred,
+.cabinet_controls.blurred {
+  filter: blur(2px);
+}
+
+.cabinet_marqueeBottom.bitten {
+  background: linear-gradient(to top, black 10%, #24234d);
+  clip-path: polygon(0 0, 100% 0, 94% 40%, 6% 40%);
+}
+
+.cabinet_controls.bitten {
+  background: linear-gradient(to bottom, black, #444476);
+  clip-path: polygon(6% 40%, 94% 40%, 100% 100%, 0 100%);
+}
+
+.cabinet_marqueeBottom.outer {
+  clip-path: polygon(0 0, 100% 0, 94% 40%, 6% 40%);
+}
+
+.cabinet_controls.outer {
+  background: black;
+  clip-path: polygon(6% 40%, 94% 40%, 100% 100%, 0 100%);
+}
+
+.cabinet_screen {
+  max-width: 1350px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 160px;
+  height: calc(100% - 260px);
+  background: linear-gradient(to bottom, black, #24234d 40%);
+  width: 100%;
+  padding: 20px;
+}
+
+.cabinet_screenScanlines {
+  background: linear-gradient(to bottom, rgba(100, 100, 100, 0.05), #2b2b2b);
+  box-shadow: 0 0 7.5px 2px rgba(0, 0, 0, 0.45) inset;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.cabinet_screenScanlines::before,
+.cabinet_screenScanlines::after {
+  display: block;
+  pointer-events: none;
+  content: "";
+  position: absolute;
+}
+
+.cabinet_screenScanlines::before {
+  width: 100%;
+  height: 2px;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0.75;
+  animation: scanline 6s linear infinite;
+}
+
+.cabinet_screenScanlines::after {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.3) 51%
+  );
+  background-size: 100% 4px;
+  animation: scanlines 1s steps(60) infinite;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translate3d(0, 200000%, 0);
+  }
+}
+@keyframes scanlines {
+  0% {
+    background-position: 0 50%;
+  }
+}
+
+/*** CABINET SCREEN ***/
+.cabinet_screenContainer {
+  display: flex;
+  height: 100%;
+}
+
+.cabinet_screenContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 30px 20px;
+}
+
+.cabinet_screenContentHeader {
+  display: flex;
+  align-items: center;
+}
+
+.cabinet_screenContentHeader p {
+  text-transform: uppercase;
+  font-size: 28px;
+  /* font-family: "Press Start 2P", system-ui; */
+}
+
+.cabinet_screenContentHeader h1 {
+  text-transform: uppercase;
+  font-size: 28px;
+  text-align: center;
+  flex: 1;
+  font-family: "Press Start 2P", system-ui;
+  margin-right: 6.5%;
+  animation: blinking 0.3s linear alternate-reverse infinite;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.cabinet_screenContentMain {
+  padding: 60px 0px;
+  align-self: center;
+  flex: 1;
+}
+
+.cabinet_screenContentList {
+}
+
+.cabinet_screenContentItem {
+  text-decoration: none;
+  margin-bottom: 16px;
+  position: relative;
+  font-size: 36px;
+  text-transform: uppercase;
+  margin-left: 8px;
+  list-style-type: none;
+}
+
+.cabinet_screenContentItem.active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  transform: translateY(-50%);
+  background: url("/assets/icons/arrow.png") no-repeat;
+  background-position: 0% 0%;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+}
+
+.cabinet_screenFooter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cabinet_screenFooterLeft {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cabinet_screenFooterLeft p {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.cabinet_screenFooterRight {
+  cursor: pointer;
+}
